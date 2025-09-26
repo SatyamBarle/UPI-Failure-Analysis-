@@ -22,30 +22,30 @@ The dataset contains **3000+** UPI transactions with the following columns: -
 1.  **Total Transactions**
     ```sql
     SELECT COUNT(*) AS total_transactions FROM upi_transactions;
-    ``` [page 1]
+    ``` 
 2.  **Total Failures**
     ```sql
     SELECT COUNT(*) AS failed_transactions FROM upi_transactions
     WHERE transaction_status = 'Failure';
-    ``` [page 1]
+    ``` 
 3.  **Failure Rate (%)**
     ```sql
     SELECT ROUND(100.0 * (SELECT COUNT(*) FROM upi_transactions
     WHERE transaction_status = 'Failure') / (SELECT COUNT(*) FROM
     upi_transactions), 2 ) AS failure_rate_percentage;
-    ``` [page 1]
+    ``` 
 4.  **Peak Failure Hours**
     ```sql
     SELECT EXTRACT(HOUR FROM transaction_time) AS hour, COUNT(*)
     AS failures FROM upi_transactions WHERE transaction_status =
     'Failure' GROUP BY hour ORDER BY failures DESC LIMIT 3;
-    ``` [page 2]
+    ``` 
 5.  **Region-wise Failure Breakdown**
     ```sql
     SELECT region, COUNT(*) AS total_failures FROM
     upi_transactions WHERE transaction_status = 'Failure' GROUP BY
     region ORDER BY total_failures DESC;
-    ``` [page 2]
+    ``` 
 6.  **Bank-wise Failure Breakdown**
     ```sql
     SELECT bank_name, COUNT(*) AS failed_txns FROM
@@ -57,7 +57,7 @@ The dataset contains **3000+** UPI transactions with the following columns: -
     SELECT failure_reason, COUNT(*) AS count FROM
     upi_transactions WHERE transaction_status = 'Failure' GROUP BY
     failure_reason ORDER BY count DESC;
-    ``` [page 2]
+    ``` 
 
 ## Power BI Dashboard Features
 
